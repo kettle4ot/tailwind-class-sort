@@ -6,27 +6,27 @@ Tailwind CSS 클래스 문자열을 지정한 순서로 정렬하는 CLI 도구�
 ## 설치
 
 ```bash
-npm install -D tailwind-class-sort
+npm install -D @kettle4ot/tailwind-class-sort
 ```
 
 또는 매번 실행만 할 경우 (배포 후):
 
 ```bash
-npx tailwind-class-sort --dir src
+npx @kettle4ot/tailwind-class-sort --dir src
 ```
 
 ## 사용법
 
 ```bash
 # 문자열 정렬 결과만 출력
-npx tailwind-class-sort "flex p-4 bg-white"
+npx @kettle4ot/tailwind-class-sort "flex p-4 bg-white"
 
 # 디렉터리 내 파일들의 className / cn() 정렬 (기본: src)
-npx tailwind-class-sort --dir src
-npx tailwind-class-sort --dir app
+npx @kettle4ot/tailwind-class-sort --dir src
+npx @kettle4ot/tailwind-class-sort --dir app
 
 # 특정 파일만 정렬
-npx tailwind-class-sort --file src/App.tsx
+npx @kettle4ot/tailwind-class-sort --file src/App.tsx
 ```
 
 ## 커스텀 순서
