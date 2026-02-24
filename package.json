@@ -1,0 +1,11 @@
+{
+  "name": "tailwind-class-sort",
+  "version": "1.0.0",
+  "description": "Tailwind CSS 클래스 자동 정렬 (커스텀 순서 설정 지원)",
+  "type": "module",
+  "bin": {
+    "tailwind-class-sort": "./cli.js"
+  },
+  "keywords": ["tailwind", "tailwindcss", "class", "sort", "order"],
+  "license": "MIT"
+}
