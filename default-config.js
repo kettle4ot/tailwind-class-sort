@@ -6,24 +6,22 @@
 export const CLASS_CATEGORY_ORDER = [
   // 0. Display — contents가 있으면 진짜 가장 앞 (0번)
   { order: 0, patterns: [/^contents$/] },
-  // 1. Overflow (position 앞)
-  { order: 1, patterns: [/^overflow-/, /^overscroll-/] },
-  // 2. z-index
-  { order: 2, patterns: [/^z-[\d-]+/] },
-  // 3. Position
+  // 1. z-index
+  { order: 1, patterns: [/^z-[\d-]+/] },
+  // 2. Position
   {
-    order: 3,
+    order: 2,
     patterns: [/^relative$/, /^absolute$/, /^fixed$/, /^sticky$/],
   },
-  // 4–8. Inset (inset-0 먼저, 그 다음 top → right → bottom → left)
-  { order: 4, patterns: [/^inset-/] },
-  { order: 5, patterns: [/^top-/] },
-  { order: 6, patterns: [/^right-/] },
-  { order: 7, patterns: [/^bottom-/] },
-  { order: 8, patterns: [/^left-/] },
-  // 9. Flex/Grid 자기 크기 (inset 뒤, display 앞 — shrink-0, flex-1 등)
+  // 3–7. Inset (inset-0 먼저, 그 다음 top → right → bottom → left)
+  { order: 3, patterns: [/^inset-/] },
+  { order: 4, patterns: [/^top-/] },
+  { order: 5, patterns: [/^right-/] },
+  { order: 6, patterns: [/^bottom-/] },
+  { order: 7, patterns: [/^left-/] },
+  // 8. Flex/Grid 자기 크기 (inset 뒤, display 앞 — shrink-0, flex-1 등)
   {
-    order: 9,
+    order: 8,
     patterns: [
       /^shrink-/,
       /^grow-/,
@@ -34,9 +32,9 @@ export const CLASS_CATEGORY_ORDER = [
       /^flex-\d/,
     ],
   },
-  // 10. Display — 그 외 (hidden 제외)
+  // 9. Display — 그 외 (hidden 제외)
   {
-    order: 10,
+    order: 9,
     patterns: [
       /^inline$/,
       /^block$/,
@@ -47,60 +45,60 @@ export const CLASS_CATEGORY_ORDER = [
       /^table$/,
     ],
   },
-  // 11. Display — hidden은 다른 display와 같이 쓸 때가 많으므로 맨 뒤
-  { order: 11, patterns: [/^hidden$/] },
-  // 12–17. Flex/Grid 레이아웃 (justify → items → content → flex-col → gap 순)
-  { order: 12, patterns: [/^justify-/] },
-  { order: 13, patterns: [/^items-/] },
-  { order: 14, patterns: [/^content-/] },
-  { order: 15, patterns: [/^flex-row/, /^flex-col/, /^flex-wrap/] },
-  { order: 16, patterns: [/^gap-/] },
-  { order: 17, patterns: [/^space-x-/, /^space-y-/] },
-  // 18–24. 크기 (w → min-w → max-w → h → min-h → max-h → size, aspect 제외)
-  { order: 18, patterns: [/^w-/] },
-  { order: 19, patterns: [/^min-w-/] },
-  { order: 20, patterns: [/^max-w-/] },
-  { order: 21, patterns: [/^h-/] },
-  { order: 22, patterns: [/^min-h-/] },
-  { order: 23, patterns: [/^max-h-/] },
-  { order: 24, patterns: [/^size-/] },
-  // 25. Aspect (크기 뒤, margin 앞)
-  { order: 25, patterns: [/^aspect-/] },
-  // 26. Margin
+  // 10. Display — hidden은 다른 display와 같이 쓸 때가 많으므로 맨 뒤
+  { order: 10, patterns: [/^hidden$/] },
+  // 11–16. Flex/Grid 레이아웃 (justify → items → content → flex-col → gap 순)
+  { order: 11, patterns: [/^justify-/] },
+  { order: 12, patterns: [/^items-/] },
+  { order: 13, patterns: [/^content-/] },
+  { order: 14, patterns: [/^flex-row/, /^flex-col/, /^flex-wrap/] },
+  { order: 15, patterns: [/^gap-/] },
+  { order: 16, patterns: [/^space-x-/, /^space-y-/] },
+  // 17–23. 크기 (w → min-w → max-w → h → min-h → max-h → size, aspect 제외)
+  { order: 17, patterns: [/^w-/] },
+  { order: 18, patterns: [/^min-w-/] },
+  { order: 19, patterns: [/^max-w-/] },
+  { order: 20, patterns: [/^h-/] },
+  { order: 21, patterns: [/^min-h-/] },
+  { order: 22, patterns: [/^max-h-/] },
+  { order: 23, patterns: [/^size-/] },
+  // 24. Aspect (크기 뒤, margin 앞)
+  { order: 24, patterns: [/^aspect-/] },
+  // 25. Margin
   {
-    order: 26,
+    order: 25,
     patterns: [
       /^m-/, /^mx-/, /^my-/, /^mt-/, /^mr-/, /^mb-/, /^ml-/,
       /^-m/, /^-mx/, /^-my/, /^-mt/, /^-mr/, /^-mb/, /^-ml/,
     ],
   },
-  // 27. Padding
+  // 26. Padding
   {
-    order: 27,
+    order: 26,
     patterns: [/^p-/, /^px-/, /^py-/, /^pt-/, /^pr-/, /^pb-/, /^pl-/],
   },
-  // 28. Border radius
-  { order: 28, patterns: [/^rounded-/] },
-  // 29. Border
-  { order: 29, patterns: [/^border$/, /^border-/, /^divide-/] },
-  // 30. Ring / Outline (ring → outline)
-  { order: 30, patterns: [/^ring-/, /^ring-offset-/] },
-  { order: 31, patterns: [/^outline-/] },
-  // 32. Background
-  { order: 32, patterns: [/^bg-/] },
-  // 33. Shadow
-  { order: 33, patterns: [/^shadow-/] },
-  // 34–36. Typography (text-size → font- → text-color/기타)
+  // 27. Border radius
+  { order: 27, patterns: [/^rounded-/] },
+  // 28. Border
+  { order: 28, patterns: [/^border$/, /^border-/, /^divide-/] },
+  // 29. Ring / Outline (ring → outline)
+  { order: 29, patterns: [/^ring-/, /^ring-offset-/] },
+  { order: 30, patterns: [/^outline-/] },
+  // 31. Background
+  { order: 31, patterns: [/^bg-/] },
+  // 32. Shadow
+  { order: 32, patterns: [/^shadow-/] },
+  // 33–35. Typography (text-size → font- → text-color/기타)
   {
-    order: 34,
+    order: 33,
     patterns: [
       /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/,
       /^text-\d+/,
     ],
   },
-  { order: 35, patterns: [/^font-/] },
+  { order: 34, patterns: [/^font-/] },
   {
-    order: 36,
+    order: 35,
     patterns: [
       /^text-/,
       /^leading-/,
@@ -115,11 +113,11 @@ export const CLASS_CATEGORY_ORDER = [
       /^text-center$/,
     ],
   },
-  // 37. Fill / Stroke (타이포 뒤)
-  { order: 37, patterns: [/^fill-/, /^stroke-/] },
-  // 38. Effect (opacity 등)
+  // 36. Fill / Stroke (타이포 뒤)
+  { order: 36, patterns: [/^fill-/, /^stroke-/] },
+  // 37. Effect (opacity 등)
   {
-    order: 38,
+    order: 37,
     patterns: [
       /^opacity-/,
       /^visibility-/,
@@ -127,6 +125,8 @@ export const CLASS_CATEGORY_ORDER = [
       /^backdrop-/,
     ],
   },
+  // 38. Overflow (transition 앞)
+  { order: 38, patterns: [/^overflow-/, /^overscroll-/] },
   // 39–41. Transition (transition → duration → ease)
   { order: 39, patterns: [/^transition-/] },
   { order: 40, patterns: [/^duration-/] },
